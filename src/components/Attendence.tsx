@@ -17,7 +17,7 @@ export default function Attendance({ setState }) {
             setState.setCurrentPhase('d2d');
         }
 
-        if (currentNumber > 5) {
+        if (currentNumber > 70) {
             updatePhase();
         }
     }, [currentNumber, presentStudent, absentStudent, setState]);

@@ -1,7 +1,7 @@
-import Home from './components/Home.tsx'
-import Attendence from "./components/Attendence.tsx";
-import D2D from "./components/D2D.tsx";
-import Result from "./components/Result.tsx";
+import Home from './components/Home.jsx'
+import Attendence from "./components/Attendence.jsx";
+import D2D from "./components/D2D.jsx";
+import Result from "./components/Result.jsx";
 import {useState} from "react";
 
 export default function App() {
@@ -33,4 +33,3 @@ export default function App() {
   else if (currentPhase === 'result') return <Result setState={setState} getState={getState}/>
   else return <span>Pretty sure you are not suppose to be here</span>
 }
-

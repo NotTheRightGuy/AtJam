@@ -1,5 +1,5 @@
 import { Kbd } from "@chakra-ui/react";
-import { ArrowBackIcon, ArrowForwardIcon } from '@chakra-ui/icons';
+import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
 import { useEffect, useState } from "react";
 
 export default function D2D({ setState }) {
@@ -14,7 +14,7 @@ export default function D2D({ setState }) {
         function updatePhase() {
             setState.setPresentD2D(D2DpresentStudent);
             setState.setAbsentD2D(D2DabsentStudent);
-            setState.setCurrentPhase('result');
+            setState.setCurrentPhase("result");
         }
 
         if (currentNumber > 9) {
@@ -27,8 +27,8 @@ export default function D2D({ setState }) {
         setD2DpresentStudent((prev) => [...prev, currentNumber]);
         setTimeout(() => {
             setBackgroundColor("white");
-            setCurrentNumber(e => e + 1);
-        }, 100);
+            setCurrentNumber((e) => e + 1);
+        }, 250);
     }
 
     function markAbsent() {
@@ -36,35 +36,52 @@ export default function D2D({ setState }) {
         setD2DabsentStudent((prev) => [...prev, currentNumber]);
         setTimeout(() => {
             setBackgroundColor("white");
-            setCurrentNumber(e => e + 1);
-        }, 100);
+            setCurrentNumber((e) => e + 1);
+        }, 250);
     }
 
     useEffect(() => {
         const handleKeyDown = (e) => {
-            if (e.key === 'ArrowLeft') {
+            if (e.key === "ArrowLeft") {
                 markAbsent();
-            } else if (e.key === 'ArrowRight') {
+            } else if (e.key === "ArrowRight") {
                 markPresent();
             }
         };
 
-        document.body.addEventListener('keydown', handleKeyDown);
+        document.body.addEventListener("keydown", handleKeyDown);
 
         return () => {
-            document.body.removeEventListener('keydown', handleKeyDown);
+            document.body.removeEventListener("keydown", handleKeyDown);
         };
     }, [markAbsent, markPresent]);
 
     return (
-        <div className="h-screen flex justify-center items-center" style={{
-            backgroundColor: backgroundColor
-        }}>
-            <section className="absolute top-4 font-medium text-2xl opacity-60">D2D</section>
-            <main className="font-space text-9xl font-medium opacity-90">{currentNumber}</main>
+        <div
+            className="h-screen flex justify-center items-center"
+            style={{
+                backgroundColor: backgroundColor,
+            }}
+        >
+            <section className="absolute top-4 font-medium text-2xl opacity-60">
+                D2D
+            </section>
+            <main className="font-space text-9xl font-medium opacity-90">
+                {currentNumber}
+            </main>
             <section className="absolute bottom-4 w-screen justify-center flex gap-16 font-space font-bold">
-                <main className="flex items-center gap-4"><Kbd><ArrowBackIcon /></Kbd> Absent</main>
-                <main className="flex items-center gap-4">Present <Kbd><ArrowForwardIcon /></Kbd></main>
+                <main className="flex items-center gap-4">
+                    <Kbd>
+                        <ArrowBackIcon />
+                    </Kbd>{" "}
+                    Absent
+                </main>
+                <main className="flex items-center gap-4">
+                    Present{" "}
+                    <Kbd>
+                        <ArrowForwardIcon />
+                    </Kbd>
+                </main>
             </section>
         </div>
     );

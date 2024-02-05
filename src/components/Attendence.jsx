@@ -17,7 +17,7 @@ export default function Attendance({ setState }) {
             setState.setCurrentPhase("d2d");
         }
 
-        if (currentNumber > 70) {
+        if (currentNumber > 10) {
             updatePhase();
         }
     }, [currentNumber, presentStudent, absentStudent, setState]);
@@ -28,7 +28,7 @@ export default function Attendance({ setState }) {
         setTimeout(() => {
             setBackgroundColor("white");
             setCurrentNumber((e) => e + 1);
-        }, 100);
+        }, 250);
     }
 
     function markAbsent() {
@@ -37,7 +37,7 @@ export default function Attendance({ setState }) {
         setTimeout(() => {
             setBackgroundColor("white");
             setCurrentNumber((e) => e + 1);
-        }, 100);
+        }, 250);
     }
 
     useEffect(() => {
